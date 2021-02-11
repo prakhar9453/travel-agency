@@ -57,6 +57,8 @@ for(var i of auto){
             a.appendChild(b);
         }
 
+        
+
         parent.appendChild(a);
 
     });
@@ -82,11 +84,17 @@ for(var i of auto){
 var final=document.getElementById('checkout_button');
 
 final.addEventListener('click',function(){
-  
-
+     
+       var node=document.getElementById('spinner');
+       node.style.display="block";
        setTimeout(function(resolve,reject){
 
+            var node=document.getElementById('spinner');
+            node.style.display="none";
+
             alert("Thanks for the request our team will contact you if details found valid");
+
+            
        },3000);
 
         timing[0].type='text';
@@ -112,12 +120,4 @@ span.onclick = function() {
     modal.style.display = "none";
   }
 
-async function helper(){
-
-    data= await fetch("http://2.bp.blogspot.com/-_FZL5Awe2mU/VcrpLBWDukI/AAAAAAAAAB4/VClPzDGSW_k/s1600/sahara.jpg");
-
-    data=await data.blob();
-    var src=URL.createObjectURL(data);
-}
-helper();
 
