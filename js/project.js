@@ -16,16 +16,16 @@ for(var i of timing)
     });
 }
 
-var cities=["Allahabad","Delhi","Ahemdabad","Jaipur","Kashmir","Mumbai","Madras","Lucknow","Kanpur","Kolkata","Goa","Shimla","Chandigarh","Agra"];
+var cities=["Allahabad","Delhi","Ahemdabad","Jaipur","Kashmir","Mumbai","Madras","Lucknow","Kanpur","Kolkata","Goa","Shimla","Chandigarh","Agra","Thane"];
 
-
+var current=-1;
 var auto=document.getElementsByClassName('city');
 
 for(var i of auto){
 
     i.addEventListener("input",function(){
 
-
+        current=this.id;
         var parent;
 
         if(this.id==="city_from")
@@ -49,38 +49,77 @@ for(var i of auto){
 
         var a = document.createElement("DIV");
         a.setAttribute('class','autocomplete');
+        parent.appendChild(a);
         for(var j=0;j<lis.length;j++)
         {
-            var b = document.createElement("DIV");
+            var b = document.createElement("div");
             b.classList.add('autocomplete-item');
             b.innerHTML = lis[j];
+            b.addEventListener("click",function(){
+                
+                
+                var parent=this.parentNode;
+                var grand=parent.parentNode;
+
+                if(grand.id==="to")
+                {
+                    var inp=document.getElementById("city_to");
+                    inp.value=this.innerHTML;
+
+                    var element=inp.parentNode.getElementsByClassName('autocomplete');
+
+                    for(var j of element)
+                    {
+                        inp.parentNode.removeChild(j);
+                    }
+
+                }
+                else{
+
+                    var inp=document.getElementById("city_from");
+                    inp.value=this.innerHTML;
+
+                    var element=inp.parentNode.getElementsByClassName('autocomplete');
+
+                    for(var j of element)
+                    {
+                        inp.parentNode.removeChild(j);
+                    }
+
+                }
+            });
             a.appendChild(b);
+            
+            
         }
 
+    });
+
+    i.addEventListener('focus',function(){
         
-
-        parent.appendChild(a);
-
-    });
-    i.addEventListener("blur",function(){
-
-
-        var parent;
-
-        if(this.id==="city_from")
-        parent=document.getElementById('from');
-        else
-        parent=document.getElementById('to');
-
-        var element=parent.getElementsByClassName('autocomplete');
-
-        for(var j of element)
+        if(current===this.id && current===-1)
         {
-            parent.removeChild(j);
-        }
 
-    });
+        }
+        else
+        {
+            var node=document.getElementsByClassName("autocomplete");
+            
+            if(node!=undefined)
+            {
+                for(var j of node)
+                {
+                    j.parentNode.removeChild(j);
+                }
+            }
+        }
+    })
+
+    
 }
+
+
+   
 var final=document.getElementById('checkout_button');
 
 final.addEventListener('click',function(){
