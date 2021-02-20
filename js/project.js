@@ -45,12 +45,14 @@ for(var i of timing)
             {
                 this.min=ent;
                 this.value=ent;
+                exit=this.value;
             
             }
             else
             {
                 this.min=j;
                 this.value=j;
+                exit=this.value;
             }
         }
     });
