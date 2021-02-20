@@ -186,6 +186,29 @@ var final=document.getElementById('checkout_button');
 final.addEventListener('click',function(){
      
 
+    if(timing[0].value=="" || timing[1].value=="" || auto[0]=="" || auto[1]=="")
+    {
+        var c=document.getElementById("field");
+        if(c)
+        {
+            return;
+        }
+
+        var b = document.createElement("div");
+        b.setAttribute("id","field");
+        b.innerHTML="*All Fields are necessary";
+        var book=document.getElementById("booking");
+        book.appendChild(b);
+        setTimeout(function(){
+
+            var book=document.getElementById("booking");
+            var b=document.getElementById("field");
+
+            book.removeChild(b);
+        },1000);
+        return;
+    }
+
         timing[0].type='text';
         timing[1].type='text';
 
