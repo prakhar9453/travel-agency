@@ -186,13 +186,13 @@ for(var i of auto){
 
     
 }
-   
+var check=document.getElementById("type_journey");
 var final=document.getElementById('checkout_button');
 
 final.addEventListener('click',function(){
      
 
-    if(timing[0].value=="" || timing[1].value=="" || auto[0].value=="" || auto[1].value=="")
+    if(timing[0].value=="" || (timing[1].value=="" && check.checked!=false) || auto[0].value=="" || auto[1].value=="")
     {
         var c=document.getElementById("field");
         if(c)
@@ -243,7 +243,6 @@ span.onclick = function() {
     modal.style.display = "none";
   }
 
-var check=document.getElementById("type_journey");
 check.addEventListener("change",function(){
 
     var ret=document.getElementById("return");
