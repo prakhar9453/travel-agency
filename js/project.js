@@ -1,4 +1,6 @@
 
+var ent,exit;
+
 Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -9,10 +11,67 @@ var timing=document.getElementsByClassName('datePicker');
 
 for(var i of timing)
 {
+    console.log(i.id);
     i.addEventListener('focus',function(){
 
+        if(this.id==="dept" && ent)
+            return;
+        
+        if(this.id==="return" && exit)
+            return;
+
         this.type='date';
-        this.value=new Date().toDateInputValue();
+        var j=new Date().toDateInputValue();
+
+        if(this.id==="dept")
+        {
+            if(exit)
+            {
+                this.value=j;
+                this.min=j;
+                this.max=exit;
+
+            }
+            else{
+            this.value=j;
+            ent=this.value;
+            this.min=j;
+            }
+        }
+        else if(this.id==="return")
+        {
+            
+            if(ent)
+            {
+                this.min=ent;
+                this.value=ent;
+            
+            }
+            else
+            {
+                this.min=j;
+                this.value=j;
+            }
+        }
+    });
+    i.addEventListener("change",function(event){
+
+    var d=document.getElementById("dept");
+    var a=document.getElementById("return");
+    this.value=event.target.value;
+    console.log(this.value);
+     if(this.id==="dept")
+     {
+        ent=this.value;
+        a.min=ent;
+     }
+     else if(this.id==="return")
+     {
+        exit=this.value;
+        d.max=exit;
+
+     }
+
     });
 }
 
@@ -124,17 +183,6 @@ var final=document.getElementById('checkout_button');
 
 final.addEventListener('click',function(){
      
-       var node=document.getElementById('spinner');
-       node.style.display="block";
-       setTimeout(function(resolve,reject){
-
-            var node=document.getElementById('spinner');
-            node.style.display="none";
-
-            alert("Thanks for the request our team will contact you if details found valid");
-
-            
-       },3000);
 
         timing[0].type='text';
         timing[1].type='text';
@@ -144,6 +192,9 @@ final.addEventListener('click',function(){
 
         auto[0].value="";
         auto[1].value="";
+
+        ent=null;
+        exit=null;
         
 });
 
@@ -159,4 +210,19 @@ span.onclick = function() {
     modal.style.display = "none";
   }
 
+var check=document.getElementById("type_journey");
+check.addEventListener("change",function(){
 
+    var ret=document.getElementById("return");
+    if(check.checked===true){
+    ret.disabled=false;
+    ret.placeholder="Return Date"
+    }
+    if(check.checked===false){
+        exit=null;
+        ret.value=null;
+        ret.disabled=true;
+        ret.type="text";
+        ret.placeholder="Add Return"
+    }
+})

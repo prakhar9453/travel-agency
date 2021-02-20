@@ -27,19 +27,23 @@
         </div>
         <div id="booking">
 
+          <div id="journey">
+          Return Journey
+          <input type="checkbox" id="type_journey"/>
+          </div>
           <div id="form" class="auto-list"> 
         
             <div id="from">
-            <input id="city_from" class="city" type="text" placeholder="🛫 From" autocomplete="off"/>
+            <input id="city_from" class="city" type="text" placeholder="🛫 From" autocomplete="off" />
             </div>
             <div id="to" class="auto-list">
             <input id="city_to" class="city" type="text" placeholder="🛬 To" autocomplete="off"/>
             </div>
             
-            <input placeholder="Departure Date" type="text" class="datePicker"/>
+            <input placeholder="Departure Date" type="text" class="datePicker" id="dept" />
           
             
-            <input placeholder="Return Date" type="text" class="datePicker"/>
+            <input placeholder="Add Return" type="text" class="datePicker" id="return" disabled/>
         
             <input id="checkout_button" type="button" value="Book Now"/>
          </div>
@@ -51,10 +55,10 @@
             <div id="animation"></div>
 
              <div id="term_condition">
-                <a href="https://www.booking.com/content/privacy.en-gb.html">Booking.com Privacy Policy</a>
-                <a href="https://www.booking.com/content/terms.en-gb.html">Booking.com Terms of Use</a>
-                <a href="https://www.kayak.co.uk/privacy">KAYAK Privacy Policy</a>
-                <a href="https://www.kayak.co.uk/actual-terms-of-use">KAYAK Terms of Use</a>
+                <a href="https://www.booking.com/content/privacy.en-gb.html" target="_blank">Booking.com Privacy Policy</a>
+                <a href="https://www.booking.com/content/terms.en-gb.html" target="_blank">Booking.com Terms of Use</a>
+                <a href="https://www.kayak.co.uk/privacy" target="_blank">KAYAK Privacy Policy</a>
+                <a href="https://www.kayak.co.uk/actual-terms-of-use" target="_blank">KAYAK Terms of Use</a>
              </div>
 
 
@@ -65,9 +69,16 @@
         
         <div id="myModal" class="modal">
 
-          <div class="modal-content">
+          <div class="modal-cont">
             <span class="close">&times;</span>
-            <p>My site will help you to book flight tickets</p>
+            <br/>
+            <p>Bookings.com offers a smooth and hassle-free hotels booking process at the lowest prices.
+               Enter the city name, 
+               departure and return date and flight requirements under the flight section.
+                A range of flight from luxury to budget ones will be displayed.
+              </p>
+              
+            
           </div>
         
         </div>

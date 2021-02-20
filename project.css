@@ -1,5 +1,6 @@
 body{
     margin:0;
+    overflow-x: hidden; 
 }
 #name{
     height:80px;
@@ -7,16 +8,26 @@ body{
     display:flex;
 }
 #title{
+    cursor: default;
     color:white;
     font-weight: bold;
     font-size: 35px;
     padding: 20px;
+}
+#return:disabled{
+    background-color:white;
+    opacity: 0.7;
+
+}
+#return{
+    color:black;
 }
 #help{
     padding:20px;
     font-size: 20px;
     color:white;
     margin-left: auto;
+    cursor: default;
 }
 #help:hover{
     
@@ -26,10 +37,11 @@ body{
 
     display:flex;
     background-color: black;
-    height:40px;
+    height:10%;
     align-content:flex-start;
 }
 #item{
+    cursor: default;
     padding:5px;
     font-size: 25px;
     margin-left:10px;
@@ -48,6 +60,15 @@ body{
     height:644px;
     position: relative;
 }
+#journey{
+
+    position: absolute;
+    font-weight: bold;
+    margin-top: 20%;
+    margin-left: 11%;
+    color: white;
+
+}
 #form{
     display: flex;
     flex-wrap: wrap;
@@ -55,16 +76,18 @@ body{
     justify-content:center;
     align-content: flex-start;
     position: absolute;
-    margin-top: 300px;
-    margin-left: 5px;
+    margin-top: 22%;
+    margin-left: 1%;
+}
+#to,#from{
+    margin:2px;
 }
 .city{
-    width:200px;
+    width:100%;
     height: 40px;
     border: 1.5px solid black;
     font-size: 20px;
     font-weight: bold;
-    margin:2px;
     border:2px solid rgb(155, 115, 4);
     text-align: center;
     
@@ -72,16 +95,20 @@ body{
 #checkout_button{
 
     width:80px;
-    height: 45px;
+    height: 40px;
     background-color:#0c6b8d;
     color:white;
     margin:2px;
     font-size: 12px;
     border:2px solid rgb(155, 115, 4);
     text-align: center;
+    cursor: default;
+}
+#checkout_button:hover{
+    background-color: #033446;
 }
 .datePicker{
-    width:230px;
+    width:18%;
     height: 40px;
     border: 1.5px solid black;
     font-size: 10px;
@@ -152,26 +179,39 @@ a:hover{
     overflow: auto; 
     background-color: rgba(0,0,0,0.5); 
   }
+
+  @keyframes animation1{
+
+      0%{height: 0%;width: 75%;font-size: 0px;}
+      99%{height: 40%;width: 75%;font-size:0px;}
+      100%{height: 40%;width: 75%;font-size: 20px;}
+
+  }
   
-  .modal-content {
+  .modal-cont{
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    animation:animation1;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    
+
   }
   .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    cursor:default;
   }
   
   .close:hover,
   .close:focus {
     color: #000;
     text-decoration: none;
-    cursor: pointer;
+    cursor: default;
   }
 #spinner{
     display: none; 
