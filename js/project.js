@@ -1,5 +1,6 @@
 
 var ent,exit;
+var dep,arr;
 
 Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
@@ -126,7 +127,7 @@ for(var i of auto){
                 {
                     var inp=document.getElementById("city_to");
                     inp.value=this.innerHTML;
-
+                    arr=inp.value;
                     var element=inp.parentNode.getElementsByClassName('autocomplete');
 
                     for(var j of element)
@@ -139,7 +140,7 @@ for(var i of auto){
 
                     var inp=document.getElementById("city_from");
                     inp.value=this.innerHTML;
-
+                    dep=inp.value;
                     var element=inp.parentNode.getElementsByClassName('autocomplete');
 
                     for(var j of element)
@@ -175,18 +176,23 @@ for(var i of auto){
             }
         }
     })
+    i.addEventListener("change",function(){
+
+        if(this.id==="city_from")
+            dep=this.value;
+        else
+            arr=this.value;
+    });
 
     
 }
-
-
    
 var final=document.getElementById('checkout_button');
 
 final.addEventListener('click',function(){
      
 
-    if(timing[0].value=="" || timing[1].value=="" || auto[0]=="" || auto[1]=="")
+    if(timing[0].value=="" || timing[1].value=="" || auto[0].value=="" || auto[1].value=="")
     {
         var c=document.getElementById("field");
         if(c)
