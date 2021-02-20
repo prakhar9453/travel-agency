@@ -226,6 +226,8 @@ final.addEventListener('click',function(){
 
         ent=null;
         exit=null;
+        dep=null;
+        arr=null;
         
 });
 
