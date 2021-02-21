@@ -212,6 +212,23 @@ final.addEventListener('click',function(){
         },1000);
         return;
     }
+    if(auto[0].value===auto[1].value)
+    {
+        var b = document.createElement("div");
+        b.setAttribute("id","field");
+        b.innerHTML="*Arrival and departure can't be same";
+        var book=document.getElementById("booking");
+        book.appendChild(b);
+        setTimeout(function(){
+
+            var book=document.getElementById("booking");
+            var b=document.getElementById("field");
+
+            book.removeChild(b);
+        },1000);
+        return;
+
+    }
 
         timing[0].type='text';
         timing[1].type='text';
