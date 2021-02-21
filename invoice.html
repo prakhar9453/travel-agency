@@ -50,12 +50,13 @@
     a=document.getElementById("start_val");
     a.innerHTML=localStorage.getItem("start");
 
-    if(localStorage.getItem("end")==false){
+    
+    if(localStorage.getItem("end")!="undefined" && localStorage.getItem("end")!="null"){
     a=document.getElementById("end_val");
     a.innerHTML=localStorage.getItem("end");
     }
     else{
-
+       
         var b=document.getElementById("end");
         var c=document.getElementById("ticket_details");
 

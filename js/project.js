@@ -61,7 +61,6 @@ for(var i of timing)
     var d=document.getElementById("dept");
     var a=document.getElementById("return");
     this.value=event.target.value;
-    console.log(this.value);
      if(this.id==="dept")
      {
         ent=this.value;
