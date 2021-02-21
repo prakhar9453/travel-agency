@@ -1,0 +1,14 @@
+body{
+    margin:0px;
+    overflow-x: hidden;
+}
+#details{
+    width:100%;
+    color: white;
+    background-color: black;
+    margin-top: 0px;
+    font-size: 30px;
+    font-weight: bolder;
+    padding: 10px;
+
+}

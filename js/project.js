@@ -224,10 +224,7 @@ final.addEventListener('click',function(){
         auto[0].value="";
         auto[1].value="";
 
-        ent=null;
-        exit=null;
-        dep=null;
-        arr=null;
+        window.open("./invoice.html","_self");
         
 });
 
