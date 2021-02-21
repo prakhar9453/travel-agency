@@ -36,9 +36,13 @@ body{
 }
 #btn{
     text-align: center;
+    background-color: #0c6b8d;
+    color: white;
+    height:30px;
+    font-size: 15px;
+    font-weight: bold;
 }
 #again{
     text-align: center;
     margin: 10px;
-    height: 20px;
 }
