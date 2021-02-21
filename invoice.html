@@ -40,11 +40,30 @@
     </div>
 </body>
 <script>
+    
+    var a=document.getElementById("inv_val");
+    a.innerHTML=101;
+    a=document.getElementById("dep_val");
+    a.innerHTML=localStorage.getItem("departure");
+    a=document.getElementById("arr_val");
+    a.innerHTML=localStorage.getItem("arrival");
+    a=document.getElementById("start_val");
+    a.innerHTML=localStorage.getItem("start");
+
+    if(localStorage.getItem("end")==false){
+    a=document.getElementById("end_val");
+    a.innerHTML=localStorage.getItem("end");
+    }
+    else{
+
+        var b=document.getElementById("end");
+        var c=document.getElementById("ticket_details");
+
+        c.removeChild(b);
+    }
+
+    
     function myfunction(){
-        ent=null;
-        exit=null;
-        dep=null;
-        arr=null;
 
         window.open("./index.html","_self");
 

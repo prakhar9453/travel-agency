@@ -227,7 +227,10 @@ final.addEventListener('click',function(){
         {
             check.checked=false;
         }
-
+        localStorage.setItem("departure",dep);
+        localStorage.setItem("arrival",arr);
+        localStorage.setItem("start",ent);
+        localStorage.setItem("end",exit);
         window.open("./invoice.html","_self");
         
 });
