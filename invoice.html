@@ -40,12 +40,9 @@
     </div>
 </body>
 <script>
-    if(!localStorage.getItem("id"))
-    {
-        localStorage.setItem("id","100");
-    }
+    
     var a=document.getElementById("inv_val");
-    a.innerHTML=parseInt(localStorage.getItem("id"))+1;
+    a.innerHTML=101;
     a=document.getElementById("dep_val");
     a.innerHTML=localStorage.getItem("departure");
     a=document.getElementById("arr_val");
