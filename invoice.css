@@ -12,3 +12,29 @@ body{
     padding: 10px;
 
 }
+#ticket_details{
+    display: flex;
+    border: 2px solid black;
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 25%;
+    flex-direction: column;
+}
+#title{
+    align-self: center;
+    font-size: 25px;
+    font-weight: bolder;
+}
+.item{
+    font-size: 20px;
+    font-weight: bold;
+    margin:10px;
+}
+#btn{
+    text-align: center;
+}
+#again{
+    text-align: center;
+    margin: 10px;
+    height: 20px;
+}

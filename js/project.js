@@ -12,7 +12,6 @@ var timing=document.getElementsByClassName('datePicker');
 
 for(var i of timing)
 {
-    console.log(i.id);
     i.addEventListener('focus',function(){
 
         if(this.id==="dept" && ent)
