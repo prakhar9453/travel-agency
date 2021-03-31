@@ -2,38 +2,38 @@ body{
     margin:0;
     overflow-x: hidden; 
 }
-#name{
+#header{
     height:80px;
     background-color:#0c6b8d;
     display:flex;
 }
-#title{
+#website-title{
     cursor: default;
     color:white;
     font-weight: bold;
     font-size: 35px;
     padding: 20px;
 }
-#return:disabled{
+#returnDate:disabled{
     background-color:white;
     opacity: 0.7;
 
 }
-#return{
+#returnDate{
     color:black;
 }
-#help{
-    padding:20px;
+#helpButton{
+    padding:30px;
     font-size: 20px;
     color:white;
     margin-left: auto;
     cursor: default;
 }
-#help:hover{
+#helpButton:hover{
     
     color:black;
 }
-#container-flex{
+#container-services{
 
     display:flex;
     background-color: black;
@@ -51,48 +51,60 @@ body{
     background-color: white;
     color:black;
 }
-#booking{
+#containerForm{
     
     animation-name:animation;
-    animation-duration:20s;
+    animation-duration:22s;
     animation-iteration-count: infinite;
     width:100%;
-    height:644px;
+    height:75vh;
     position: relative;
 }
-#journey{
+#isReturn{
 
-    position: absolute;
+    grid-area: 1/1/2/2;
     font-weight: bold;
-    margin-top: 20%;
-    margin-left: 11%;
+    font-size: 20px;
     color: white;
+    width:20vw;
 
 }
-#field{
-
-    position: absolute;
-    font-weight: bold;
-    margin-top: 18%;
-    margin-left: 11%;
-    color:rgb(109, 6, 6);
-
-}
-#form{
-    display: flex;
-    flex-wrap: wrap;
+#journey-form{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
     width:100%;
     justify-content:center;
-    align-content: flex-start;
+    align-content: center;
     position: absolute;
     margin-top: 22%;
-    margin-left: 1%;
+
 }
-#to,#from{
+#departureCityContainer{
+    grid-area:2/1/3/2;
+}
+#arrivalCityContainer{
+    grid-area:2/2/3/3;
+}
+#departureDate{
+    grid-area:2/3/3/4;
+}
+#returnDate{
+    grid-area:2/4/3/5;
+}
+#fieldAlert{
+    color: tomato;
+    font-weight: bold;
+    font-size: 15px;
+    grid-area:4/5/5/6;
+    width: 10vw;
+}
+#departureCityContainer,#arrivalCityContainer{
     margin:2px;
 }
 .city{
-    width:100%;
+    width: 20vw;
     height: 40px;
     border: 1.5px solid black;
     font-size: 20px;
@@ -103,7 +115,8 @@ body{
 }
 #checkout_button{
 
-    width:80px;
+    width: 10vw;
+    grid-area:2/5/3/6;
     height: 40px;
     background-color:#0c6b8d;
     color:white;
@@ -117,7 +130,7 @@ body{
     background-color: #033446;
 }
 .datePicker{
-    width:18%;
+    width: 20vw;
     height: 40px;
     border: 1.5px solid black;
     font-size: 10px;
@@ -129,14 +142,14 @@ body{
 }
 @keyframes animation{
 
-    0%{background-image: url(https://www.flydubai.com/en/media/Flight-resumption-todubai-2560x960_tcm8-160498.jpg);background-size: 100% 644px;}
-    25%{background-image: url(https://cache.marriott.com/marriottassets/marriott/MLESI/mlesi-aerial-view-3821-hor-feat.jpg);background-size: 100% 644px;}
-    50%{background-image: url(https://pix10.agoda.net/geo/city/17193/1_17193_02.jpg?s=1920x822);background-size: 100%  644px;}
-    75%{background-image: url(http://res.cloudinary.com/simpleview/image/upload/v1497480003/clients/lasvegas/strip_b86ddbea-3add-4995-b449-ac85d700b027.jpg);background-size: 100% 644px;}
-    100%{background-image: url(https://cdn.getyourguide.com/img/tour/5cc5c21db1d50.jpeg/148.jpg);background-size: 100% 644px;}
+    0%{background-image: url(https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1000&q=80);background-size: 100% 75vh;}
+    25%{background-image: url(https://cache.marriott.com/marriottassets/marriott/MLESI/mlesi-aerial-view-3821-hor-feat.jpg);background-size: 100% 75vh;}
+    50%{background-image: url(https://pix10.agoda.net/geo/city/17193/1_17193_02.jpg?s=1920x822);background-size: 100%  75vh;}
+    75%{background-image: url(http://res.cloudinary.com/simpleview/image/upload/v1497480003/clients/lasvegas/strip_b86ddbea-3add-4995-b449-ac85d700b027.jpg);background-size: 100% 75vh;}
+    100%{background-image: url(https://cdn.getyourguide.com/img/tour/5cc5c21db1d50.jpeg/148.jpg);background-size: 100% 75vh;}
 
 }
-#term_condition{
+#termsCondition{
 
     display:flex;
     justify-content: space-around;
@@ -151,7 +164,7 @@ a{
 a:hover{
     color:black;
 }
-#thanks{
+#greeting{
     background-color: black;
     color: wheat;
     font-weight: bold;
@@ -222,13 +235,3 @@ a:hover{
     text-decoration: none;
     cursor: default;
   }
-#spinner{
-    display: none; 
-    position: absolute; 
-    left: 50%;
-    top: 50%;
-    width: 50px; 
-    height: 50px; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.5); 
-}

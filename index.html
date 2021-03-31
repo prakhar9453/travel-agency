@@ -9,15 +9,15 @@
   <link href="project.css" rel="stylesheet">
 </head>
 <body>
-       <div id="name">
-           <div id="title">
+       <div id="header">
+           <div id="website-title">
            Bookings.com
            </div>
-           <div id="help">
+           <div id="helpButton">
                Help
            </div>
         </div>
-       <div id="container-flex">
+       <div id="container-services">
              <div id="item">🏠 Stay</div>
             <div id="item">✈️ Flight</div>
             <div id="item">🏎️ Car Hire</div>
@@ -25,25 +25,26 @@
             <div id="item">🚕 Airport Taxis</div>
 
         </div>
-        <div id="booking">
+        <div id="containerForm">
 
-          <div id="journey">
-          Return Journey
-          <input type="checkbox" id="type_journey"/>
-          </div>
-          <div id="form" class="auto-list"> 
-        
-            <div id="from">
-            <input id="city_from" class="city" type="text" placeholder="🛫 From" autocomplete="off" />
+         
+          <div id="journey-form"> 
+            <div id="isReturn">
+              Return Journey
+              <input type="checkbox" id="journeyType"/>
+              </div>
+            <div id="departureCityContainer" class="autoComplete">
+            <input id="departureCity" class="city" type="text" placeholder="🛫 From" autocomplete="off" />
             </div>
-            <div id="to" class="auto-list">
-            <input id="city_to" class="city" type="text" placeholder="🛬 To" autocomplete="off"/>
+
+            <div id="arrivalCityContainer" class="autoCompelete">
+            <input id="arrivalCity" class="city" type="text" placeholder="🛬 To" autocomplete="off"/>
             </div>
             
-            <input placeholder="Departure Date" type="text" class="datePicker" id="dept" />
+            <input placeholder="Departure Date" type="text" class="datePicker" id="departureDate" />
           
             
-            <input placeholder="Add Return" type="text" class="datePicker" id="return" disabled/>
+            <input placeholder="Add Return" type="text" class="datePicker" id="returnDate" disabled/>
         
             <input id="checkout_button" type="button" value="Book Now"/>
          </div>
@@ -52,9 +53,7 @@
 
         <div>
 
-            <div id="animation"></div>
-
-             <div id="term_condition">
+             <div id="termsCondition">
                 <a href="https://www.booking.com/content/privacy.en-gb.html" target="_blank">Booking.com Privacy Policy</a>
                 <a href="https://www.booking.com/content/terms.en-gb.html" target="_blank">Booking.com Terms of Use</a>
                 <a href="https://www.kayak.co.uk/privacy" target="_blank">KAYAK Privacy Policy</a>
@@ -63,11 +62,11 @@
 
 
         </div>
-        <div id="thanks">
+        <div id="greeting">
             Thanks for Visiting have a safe journey.
         </div>
         
-        <div id="myModal" class="modal">
+        <div id="helpModal" class="modal">
 
           <div class="modal-cont">
             <span class="close">&times;</span>

@@ -1,6 +1,5 @@
-
-var ent,exit;
-var dep,arr;
+var departureDate,returnDate;
+var departureCity,arrivalCity;
 
 Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
@@ -8,68 +7,71 @@ Date.prototype.toDateInputValue = (function() {
     return local.toJSON().slice(0,10);
     });
 
-var timing=document.getElementsByClassName('datePicker');
+var dateElement=document.getElementsByClassName('datePicker');
 
-for(var i of timing)
+for(var i of dateElement)
 {
     i.addEventListener('focus',function(){
 
-        if(this.id==="dept" && ent)
+        if(this.id==="departureDate" && departureDate)
             return;
         
-        if(this.id==="return" && exit)
+        if(this.id==="returnDate" && returnDate)
             return;
 
         this.type='date';
-        var j=new Date().toDateInputValue();
+        var currentDate=new Date().toDateInputValue();
 
-        if(this.id==="dept")
+        if(this.id==="departureDate")
         {
-            if(exit)
+            if(returnDate)
             {
-                this.value=j;
-                this.min=j;
-                this.max=exit;
+                this.value=currentDate;
+                departureDate=this.value;
+                this.min=currentDate;
+                this.max=returnDate;
 
             }
             else{
-            this.value=j;
-            ent=this.value;
-            this.min=j;
+            this.value=currentDate;
+            departureDate=this.value;
+            this.min=currentDate;
             }
         }
-        else if(this.id==="return")
+        else if(this.id==="returnDate")
         {
             
-            if(ent)
+            if(departureDate)
             {
-                this.min=ent;
-                this.value=ent;
-                exit=this.value;
+                this.min=departureDate;
+                this.value=departureDate;
+                returnDate=this.value;
             
             }
             else
             {
-                this.min=j;
-                this.value=j;
-                exit=this.value;
+                this.min=currentDate;
+                this.value=currentDate;
+                returnDate=this.value;
             }
         }
     });
     i.addEventListener("change",function(event){
 
-    var d=document.getElementById("dept");
-    var a=document.getElementById("return");
+    var departureDateElement=document.getElementById("departureDate");
+    var returnDateElement=document.getElementById("returnDate");
     this.value=event.target.value;
-     if(this.id==="dept")
+
+     if(this.id==="departureDate")
      {
-        ent=this.value;
-        a.min=ent;
+        departureDate=event.target.value;
+        returnDateElement.min=departureDate;
+       
      }
-     else if(this.id==="return")
+     else if(this.id==="returnDate")
      {
-        exit=this.value;
-        d.max=exit;
+        returnDate=this.value;
+        departureDateElement.max=returnDate;
 
      }
 
@@ -79,21 +81,22 @@ for(var i of timing)
 var cities=["Allahabad","Delhi","Ahemdabad","Jaipur","Kashmir","Mumbai","Madras","Lucknow","Kanpur","Kolkata","Goa","Shimla","Chandigarh","Agra","Thane"];
 
 var current=-1;
-var auto=document.getElementsByClassName('city');
+var cityInputElement=document.getElementsByClassName('city');
 
-for(var i of auto){
+for(var i of cityInputElement){
 
     i.addEventListener("input",function(){
 
         current=this.id;
         var parent;
 
-        if(this.id==="city_from")
-        parent=document.getElementById('from');
+        if(this.id==="departureCity")
+        parent=document.getElementById('departureCityContainer');
         else
-        parent=document.getElementById('to');
+        parent=document.getElementById('arrivalCityContainer');
 
-        var element=parent.getElementsByClassName('autocomplete');
+        var element=parent.getElementsByClassName('autocompleteContainer');
+        console.log(element);
 
         for(var j of element)
         {
@@ -105,51 +108,55 @@ for(var i of auto){
             return;
         }
 
-        var lis=cities.filter(x=>x.toUpperCase().startsWith(this.value.toUpperCase()));
+        var autoCompleteList=cities.filter(x=>x.toUpperCase().startsWith(this.value.toUpperCase()));
 
-        var a = document.createElement("DIV");
-        a.setAttribute('class','autocomplete');
-        parent.appendChild(a);
-        for(var j=0;j<lis.length;j++)
+        var divElement = document.createElement("div");
+        divElement.setAttribute('class','autocompleteContainer');
+        parent.appendChild(divElement);
+
+        for(var j=0;j<autoCompleteList.length;j++)
         {
-            var b = document.createElement("div");
-            b.classList.add('autocomplete-item');
-            b.innerHTML = lis[j];
-            b.addEventListener("click",function(){
+            var cityElement = document.createElement("div");
+            cityElement.classList.add('autocomplete-item');
+            cityElement.innerHTML = autoCompleteList[j];
+            cityElement.addEventListener("click",function(){
                 
                 
                 var parent=this.parentNode;
-                var grand=parent.parentNode;
+                var grandParent=parent.parentNode;
 
-                if(grand.id==="to")
+                if(grandParent.id==="arrivalCityContainer")
                 {
-                    var inp=document.getElementById("city_to");
-                    inp.value=this.innerHTML;
-                    arr=inp.value;
-                    var element=inp.parentNode.getElementsByClassName('autocomplete');
+                    var inputElementArrival=document.getElementById("arrivalCity");
+                    inputElementArrival.value=this.innerHTML;
+                    arrivalCity=inputElementArrival.value;
+                    var autoCompleteElement=document.getElementsByClassName('autocompleteContainer');
+                    console.log(autoCompleteElement);
+                    
 
-                    for(var j of element)
+                    for(var j of autoCompleteElement)
                     {
-                        inp.parentNode.removeChild(j);
+                        inputElementArrival.parentNode.removeChild(j);
                     }
 
                 }
                 else{
 
-                    var inp=document.getElementById("city_from");
-                    inp.value=this.innerHTML;
-                    dep=inp.value;
-                    var element=inp.parentNode.getElementsByClassName('autocomplete');
+                    var inputElemenetDeparture=document.getElementById("departureCity");
+                    inputElemenetDeparture.value=this.innerHTML;
+                    departureCity=inputElemenetDeparture.value;
+                    var autoCompleteElement=document.getElementsByClassName('autocompleteContainer');
+                    console.log(autoCompleteElement);
+                    
 
-                    for(var j of element)
+                    for(var j of autoCompleteElement)
                     {
-                        inp.parentNode.removeChild(j);
+                        inputElemenetDeparture.parentNode.removeChild(j);
                     }
 
                 }
             });
-            a.appendChild(b);
-            
+            divElement.appendChild(cityElement); 
             
         }
 
@@ -163,11 +170,11 @@ for(var i of auto){
         }
         else
         {
-            var node=document.getElementsByClassName("autocomplete");
+            var autoCompleteElement=document.getElementsByClassName("autocompleteContainer");
             
-            if(node!=undefined)
+            if(autoCompleteElement!=undefined)
             {
-                for(var j of node)
+                for(var j of autoCompleteElement)
                 {
                     j.parentNode.removeChild(j);
                 }
@@ -176,84 +183,82 @@ for(var i of auto){
     })
     i.addEventListener("change",function(){
 
-        if(this.id==="city_from")
-            dep=this.value;
+        if(this.id==="departureCity")
+            departureCity=this.value;
         else
-            arr=this.value;
+            arrivalCity=this.value;
     });
-
     
 }
-var check=document.getElementById("type_journey");
-var final=document.getElementById('checkout_button');
+var journeyType=document.getElementById("journeyType");
+var checkOutButton=document.getElementById('checkout_button');
 
-final.addEventListener('click',function(){
+checkOutButton.addEventListener('click',function(){
      
 
-    if(timing[0].value=="" || (timing[1].value=="" && check.checked!=false) || auto[0].value=="" || auto[1].value=="")
+    if(dateElement[0].value=="" || (dateElement[1].value=="" && journeyType.checked!=false) || cityInputElement[0].value=="" || cityInputElement[1].value=="")
     {
-        var c=document.getElementById("field");
-        if(c)
+        var allFieldWarning=document.getElementById("fieldAlert");
+        if(allFieldWarning)
         {
             return;
         }
 
-        var b = document.createElement("div");
-        b.setAttribute("id","field");
-        b.innerHTML="*All Fields are necessary";
-        var book=document.getElementById("booking");
-        book.appendChild(b);
+        var fieldWarning = document.createElement("div");
+        fieldWarning.setAttribute("id","fieldAlert");
+        fieldWarning.innerHTML="*All Fields are necessary";
+        var containerForm=document.getElementById("journey-form");
+        containerForm.appendChild(fieldWarning);
         setTimeout(function(){
 
-            var book=document.getElementById("booking");
-            var b=document.getElementById("field");
+            
+            var fieldWarning=document.getElementById("fieldAlert");
 
-            book.removeChild(b);
+            fieldWarning.parentNode.removeChild(fieldWarning);
         },1000);
         return;
     }
-    if(auto[0].value===auto[1].value)
+    if(cityInputElement[0].value===cityInputElement[1].value)
     {
-        var b = document.createElement("div");
-        b.setAttribute("id","field");
-        b.innerHTML="*Arrival and departure can't be same";
-        var book=document.getElementById("booking");
-        book.appendChild(b);
+        var sameFieldWarning = document.createElement("div");
+        sameFieldWarning.setAttribute("id","fieldAlert");
+        sameFieldWarning.innerHTML="*Arrival and departure can't be same";
+        var containerForm=document.getElementById("journey-form");
+        containerForm.appendChild(sameFieldWarning);
         setTimeout(function(){
 
-            var book=document.getElementById("booking");
-            var b=document.getElementById("field");
-
-            book.removeChild(b);
+            
+            var sameFieldWarning=document.getElementById("fieldAlert");
+            sameFieldWarning.parentNode.removeChild(sameFieldWarning);
         },1000);
         return;
 
     }
 
-        timing[0].type='text';
-        timing[1].type='text';
+        dateElement[0].type='text';
+        dateElement[1].type='text';
 
-        timing[0].value="";
-        timing[1].value="";
+        dateElement[0].value="";
+        dateElement[1].value="";
 
-        auto[0].value="";
-        auto[1].value="";
+        cityInputElement[0].value="";
+        cityInputElement[1].value="";
 
-        if(check.checked===true)
+        if(journeyType.checked===true)
         {
-            check.checked=false;
+            journeyType.checked=false;
         }
-        localStorage.setItem("departure",dep.toUpperCase());
-        localStorage.setItem("arrival",arr.toUpperCase());
-        localStorage.setItem("start",ent);
-        localStorage.setItem("end",exit);
+        localStorage.setItem("departureCity",departureCity.toUpperCase());
+        localStorage.setItem("arrivalCity",arrivalCity.toUpperCase());
+        localStorage.setItem("departureDate",departureDate);
+        localStorage.setItem("returnDate",returnDate);
         window.open("./invoice.html","_self");
         
 });
 
 var span = document.getElementsByClassName("close")[0];
-var btn = document.getElementById("help");
-var modal = document.getElementById("myModal");
+var btn = document.getElementById("helpButton");
+var modal = document.getElementById("helpModal");
 
 btn.onclick = function() {
     modal.style.display = "block";
@@ -263,18 +268,18 @@ span.onclick = function() {
     modal.style.display = "none";
   }
 
-check.addEventListener("change",function(){
+journeyType.addEventListener("change",function(){
 
-    var ret=document.getElementById("return");
-    if(check.checked===true){
-    ret.disabled=false;
-    ret.placeholder="Return Date"
+    var returnDateElement=document.getElementById("returnDate");
+    if(journeyType.checked===true){
+    returnDateElement.disabled=false;
+    returnDateElement.placeholder="Return Date"
     }
-    if(check.checked===false){
-        exit=null;
-        ret.value=null;
-        ret.disabled=true;
-        ret.type="text";
-        ret.placeholder="Add Return"
+    if(journeyType.checked===false){
+        returnDate=null;
+        returnDateElement.value=null;
+        returnDateElement.disabled=true;
+        returnDateElement.type="text";
+        returnDateElement.placeholder="Add Return"
     }
 })

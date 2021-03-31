@@ -14,57 +14,59 @@
     </div>
     <div id="ticket_details">
         <div id="title">Ticket Details</div>
-        <div class="item" id="inv">
+        <div class="item" id="invoiceNo">
             <div id="inv_label">Invoice No.</div>
             <div id="inv_val"></div>
         </div>
-        <div class="item" id="dep1">
+        <div class="item" id="departureCity">
             <div id="dep_label">Departure City</div>
             <div id="dep_val"></div>
         </div>
-        <div class="item" id="arr1">
+        <div class="item" id="arrivalCity">
             <div id="arr_label">Arrival City</div>
             <div id="arr_val"></div>
         </div>
-        <div class="item" id="start">
+        <div class="item" id="departureDate">
             <div id="start_label">Depature Date</div>
             <div id="start_val"></div>
         </div>
-        <div class="item" id="end">
-            <div id="end_label">Arrival Date</div>
-            <div id="end_val"></div>
+        <div class="item" id="returnDate">
+            <div id="ret_label">Arrival Date</div>
+            <div id="ret_val"></div>
         </div>
     </div>
     <div id="again">
-        <button id="btn" onclick="myfunction()">Book Ticket Again</button>
+        <button id="btn" onclick="revertBack()">Book Ticket Again</button>
     </div>
 </body>
 <script>
     
-    var a=document.getElementById("inv_val");
-    a.innerHTML=101;
-    a=document.getElementById("dep_val");
-    a.innerHTML=localStorage.getItem("departure");
-    a=document.getElementById("arr_val");
-    a.innerHTML=localStorage.getItem("arrival");
-    a=document.getElementById("start_val");
-    a.innerHTML=localStorage.getItem("start");
+    var value;
+    value=document.getElementById("inv_val");
+    value.innerHTML=101;
+    value=document.getElementById("dep_val");
+    value.innerHTML=localStorage.getItem("departureCity");
+    value=document.getElementById("arr_val");
+    value.innerHTML=localStorage.getItem("arrivalCity");
+    value=document.getElementById("start_val");
+    value.innerHTML=localStorage.getItem("departureDate");
 
+    console.log(localStorage.getItem("returnDate"));
 
-    if(localStorage.getItem("end")!="undefined" && localStorage.getItem("end")!="null"){
-    a=document.getElementById("end_val");
-    a.innerHTML=localStorage.getItem("end");
+    if(localStorage.getItem("returnDate")!="undefined" && localStorage.getItem("returnDate")!="null"){
+    a=document.getElementById("ret_val");
+    a.innerHTML=localStorage.getItem("returnDate");
     }
     else{
        
-        var b=document.getElementById("end");
+        var b=document.getElementById("returnDate");
         var c=document.getElementById("ticket_details");
 
         c.removeChild(b);
     }
 
     
-    function myfunction(){
+    function revertBack(){
 
         window.open("./index.html","_self");
 
